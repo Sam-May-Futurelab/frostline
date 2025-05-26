@@ -42,84 +42,6 @@ A visually stunning one-page snowboard website featuring beautiful animations, s
 - Scroll-triggered reveals
 - Particle systems
 
-## 🛠️ Installation & Setup
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd frostline
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser**
-   Navigate to `http://localhost:5173`
-
-## 📦 Build for Production
-
-```bash
-npm run build
-```
-
-Built files will be in the `dist/` directory.
-
-## 🎯 Key Components
-
-### Hero Section
-- Animated snowboarder graphics
-- Staggered text reveals
-- Glowing call-to-action button
-- Snow particle background
-
-### Navigation
-- Fixed position with backdrop blur
-- Smooth scroll to sections
-- Mobile-friendly hamburger menu
-
-### Gear Showcase
-- Touch-enabled carousel
-- Product cards with hover effects
-- Responsive grid layout
-
-### Call-to-Action
-- Prominent sign-up section
-- Gradient backgrounds
-- Interactive button states
-
-## 🔧 Customization
-
-### Adding New Colors
-Update `tailwind.config.js`:
-```javascript
-theme: {
-  extend: {
-    colors: {
-      'your-color': '#HEXCODE',
-    }
-  }
-}
-```
-
-### Adding New Animations
-Add to `src/style.css`:
-```css
-@keyframes your-animation {
-  /* keyframes */
-}
-
-.your-class {
-  animation: your-animation 1s ease-out;
-}
-```
-
 ## 📱 Browser Support
 
 - Chrome 88+
@@ -190,23 +112,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ### Installation
 
-```bash
-# Clone the repository
-git clone <repository-url>
-cd frostline
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
 
 ## 📁 Project Structure
 
@@ -258,12 +163,6 @@ Change the CSS custom properties in `style.css` to match your brand.
 
 ## 🚀 Deployment
 
-```bash
-# Build for production
-npm run build
-
-# Deploy the dist/ folder to your hosting provider
-```
 
 ## 🤝 Contributing
 

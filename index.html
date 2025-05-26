@@ -31,31 +31,60 @@
 
       <!-- Hero Section -->
       <section id="hero">
-        <!-- Snow particles container -->
+        <!-- Enhanced snow effects container -->
         <div id="snow-container" class="absolute inset-0"></div>
+        <div id="hero-snow-trails" class="absolute inset-0"></div>
+        <div id="hero-aurora" class="absolute inset-0"></div>
+        
+        <!-- Mountain landscape background -->
+        <div class="hero-mountain-landscape"></div>
+        
+        <!-- Snowboard trail effects -->
+        <div class="snowboard-trails">
+          <div class="trail trail-1"></div>
+          <div class="trail trail-2"></div>
+          <div class="trail trail-3"></div>
+        </div>
         
         <!-- Hero content -->
         <div class="container">
-          <h1 class="font-heading" id="hero-title" style="opacity: 0;">
+          <h1 class="font-heading hero-title-enhanced" id="hero-title" style="opacity: 0;">
             FROSTLINE
           </h1>
           <p id="hero-subtitle" style="opacity: 0;">
             Experience the mountains like never before with premium snowboard gear designed for champions
           </p>
           <div id="hero-buttons" style="opacity: 0; display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
-            <button class="btn-primary">Explore Collection</button>
-            <button class="btn-secondary">Watch Video</button>
+            <button class="btn-primary hero-btn-enhanced">Explore Collection</button>
+            <button class="btn-secondary hero-btn-enhanced">Watch Video</button>
           </div>
         </div>
 
-        <!-- Animated snowboarder -->
+        <!-- Enhanced snowboarder action image -->
         <div id="snowboarder" style="position: absolute; bottom: 5rem; right: 2.5rem; opacity: 0;">
-          <svg width="200" height="200" viewBox="0 0 200 200" class="animate-float">
-            <path d="M50 150 Q100 100 150 150" stroke="#4FC3F7" stroke-width="3" fill="none"/>
-            <circle cx="100" cy="130" r="8" fill="#1976D2"/>
-            <path d="M100 130 Q110 140 120 150" stroke="#4FC3F7" stroke-width="2" fill="none"/>
-          </svg>
+          <div class="snowboarder-container">
+            <img src="src/hero-images/snowboarder-action.png" alt="Snowboarder in Action" class="snowboarder-image">
+            <!-- Speed lines for dynamic effect -->
+            <div class="speed-lines">
+              <div class="speed-line speed-line-1"></div>
+              <div class="speed-line speed-line-2"></div>
+              <div class="speed-line speed-line-3"></div>
+            </div>
+          </div>
         </div>
+        
+        <!-- Floating snow crystals -->
+        <div class="hero-snow-crystals">
+          <div class="snow-crystal crystal-1">❄</div>
+          <div class="snow-crystal crystal-2">❅</div>
+          <div class="snow-crystal crystal-3">❄</div>
+          <div class="snow-crystal crystal-4">❅</div>
+          <div class="snow-crystal crystal-5">❄</div>
+          <div class="snow-crystal crystal-6">❅</div>
+        </div>
+        
+        <!-- Wind effect -->
+        <div class="hero-wind-effect"></div>
       </section>
 
       <!-- Gear Showcase -->
@@ -70,27 +99,48 @@
           <div class="gear-carousel reveal-element">
             <div class="gear-track">
               <div class="gear-card">
-                <div class="gear-image bg-gradient-to-br from-ice-blue to-deep-blue">
+                <div class="gear-image">
+                  <img src="src/gear-images/alpine-pro-snowboard.jpg" alt="Alpine Pro Snowboard" class="gear-product-image">
                   <span class="gear-label">ALPINE PRO</span>
                 </div>
                 <h3 class="font-heading text-xl font-bold text-charcoal mb-2">Alpine Pro</h3>
-                <p class="text-gray-600 mb-4">Professional grade snowboard for advanced riders</p>
+                <p class="text-gray-600 mb-4">Precision-engineered for speed demons. Carbon fiber core with titanal reinforcement delivers explosive edge control and unwavering stability at high speeds.</p>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-2xl font-bold text-charcoal">$899</span>
+                  <div class="flex text-yellow-400">
+                    <span>★★★★★</span>
+                  </div>
+                </div>
                 <button class="btn-primary w-full">View Details</button>
               </div>
               <div class="gear-card">
-                <div class="gear-image bg-gradient-to-br from-deep-blue to-light-blue">
+                <div class="gear-image">
+                  <img src="src/gear-images/freestyle-x-snowboard.jpg" alt="Freestyle X Snowboard" class="gear-product-image">
                   <span class="gear-label">FREESTYLE X</span>
                 </div>
                 <h3 class="font-heading text-xl font-bold text-charcoal mb-2">Freestyle X</h3>
-                <p class="text-gray-600 mb-4">Perfect for tricks and park riding</p>
+                <p class="text-gray-600 mb-4">Built for park legends. Twin directional shape with pop-enhancing bamboo core lets you stomp landings and butter rails with unmatched style.</p>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-2xl font-bold text-charcoal">$649</span>
+                  <div class="flex text-yellow-400">
+                    <span>★★★★★</span>
+                  </div>
+                </div>
                 <button class="btn-primary w-full">View Details</button>
               </div>
               <div class="gear-card">
-                <div class="gear-image bg-gradient-to-br from-light-blue to-frost">
+                <div class="gear-image">
+                  <img src="src/gear-images/all-mountain-snowboard.jpg" alt="All-Mountain Snowboard" class="gear-product-image">
                   <span class="gear-label">ALL-MOUNTAIN</span>
                 </div>
                 <h3 class="font-heading text-xl font-bold text-charcoal mb-2">All-Mountain</h3>
-                <p class="text-gray-600 mb-4">Versatile board for all terrain types</p>
+                <p class="text-gray-600 mb-4">Your passport to every terrain. Hybrid camber profile with responsive wood core conquers powder, groomers, and everything in between with confidence.</p>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-2xl font-bold text-charcoal">$549</span>
+                  <div class="flex text-yellow-400">
+                    <span>★★★★☆</span>
+                  </div>
+                </div>
                 <button class="btn-primary w-full">View Details</button>
               </div>
             </div>
@@ -99,14 +149,14 @@
       </section>
 
       <!-- About Us Section -->
-      <section id="about" class="section-padding bg-charcoal text-white overflow-hidden">
+      <section id="about" class="section-padding overflow-hidden">
         <div class="container">
           <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div class="reveal-element">
               <h2 class="font-heading text-4xl font-bold mb-6">
                 Crafting <span class="text-ice-blue">Excellence</span> Since 2020
               </h2>
-              <p class="text-lg mb-6 text-gray-300">
+              <p class="text-lg mb-6 text-slate-800 font-medium">
                 Born in the heart of the Alps, FROSTLINE emerged from a passion for pushing boundaries. 
                 Our team of engineers and pro riders work tirelessly to create boards that don't just 
                 perform—they inspire.
@@ -114,19 +164,19 @@
               <div class="grid grid-cols-2 gap-6 mb-8">
                 <div class="stat-card">
                   <h3 class="font-heading text-3xl font-bold text-ice-blue">15K+</h3>
-                  <p class="text-sm text-gray-400">Happy Riders</p>
+                  <p class="text-sm text-slate-600">Happy Riders</p>
                 </div>
                 <div class="stat-card">
                   <h3 class="font-heading text-3xl font-bold text-ice-blue">50+</h3>
-                  <p class="text-sm text-gray-400">Countries</p>
+                  <p class="text-sm text-slate-600">Countries</p>
                 </div>
                 <div class="stat-card">
                   <h3 class="font-heading text-3xl font-bold text-ice-blue">100%</h3>
-                  <p class="text-sm text-gray-400">Sustainable</p>
+                  <p class="text-sm text-slate-600">Sustainable</p>
                 </div>
                 <div class="stat-card">
                   <h3 class="font-heading text-3xl font-bold text-ice-blue">24/7</h3>
-                  <p class="text-sm text-gray-400">Support</p>
+                  <p class="text-sm text-slate-600">Support</p>
                 </div>
               </div>
               <button class="btn-secondary">Learn More</button>
@@ -134,8 +184,11 @@
             <div class="reveal-element">
               <div class="about-image-container">
                 <div class="about-image bg-gradient-to-br from-ice-blue/20 to-deep-blue/20 backdrop-blur-sm">
+                  <div class="snowboarder-spotlight"></div>
                   <div class="mountain-silhouette"></div>
-                  <div class="rider-silhouette"></div>
+                  <div class="about-logo-on-mountain flex items-center justify-center">
+                    <img src="src/assets/frostline-logo.svg" alt="FROSTLINE Logo" class="about-frostline-logo">
+                  </div>
                 </div>
               </div>
             </div>
@@ -161,7 +214,9 @@
                 Every turn feels effortless, every landing perfect."
               </p>
               <div class="testimonial-author">
-                <div class="author-avatar bg-gradient-to-r from-ice-blue to-deep-blue"></div>
+                <div class="author-avatar">
+                  <img src="src/avatars/sarah-chen-avatar.jpg" alt="Sarah Chen" class="avatar-image">
+                </div>
                 <div>
                   <h4 class="font-semibold text-charcoal">Sarah Chen</h4>
                   <p class="text-sm text-gray-500">Pro Snowboarder</p>
@@ -178,7 +233,9 @@
                 and the performance speaks for itself on every mountain."
               </p>
               <div class="testimonial-author">
-                <div class="author-avatar bg-gradient-to-r from-deep-blue to-light-blue"></div>
+                <div class="author-avatar">
+                  <img src="src/avatars/marcus-rodriguez-avatar.jpg" alt="Marcus Rodriguez" class="avatar-image">
+                </div>
                 <div>
                   <h4 class="font-semibold text-charcoal">Marcus Rodriguez</h4>
                   <p class="text-sm text-gray-500">Olympic Athlete</p>
@@ -195,7 +252,9 @@
                 The customer service is as impressive as their boards."
               </p>
               <div class="testimonial-author">
-                <div class="author-avatar bg-gradient-to-r from-light-blue to-frost"></div>
+                <div class="author-avatar">
+                  <img src="src/avatars/emma-thompson-avatar.jpg" alt="Emma Thompson" class="avatar-image">
+                </div>
                 <div>
                   <h4 class="font-semibold text-charcoal">Emma Thompson</h4>
                   <p class="text-sm text-gray-500">Weekend Warrior</p>
@@ -207,36 +266,83 @@
       </section>
 
       <!-- Call to Action -->
-      <section class="section-padding bg-gradient-to-r from-ice-blue to-deep-blue text-white">
-        <div class="container text-center">
-          <h2 class="font-heading text-4xl font-bold mb-6 reveal-element">
-            Ready to Elevate Your Ride?
-          </h2>
-          <p class="text-xl mb-8 text-blue-100 reveal-element">
-            Join thousands of riders who trust FROSTLINE for their mountain adventures
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center reveal-element">
-            <button class="btn-secondary bg-white text-ice-blue hover:bg-gray-100">
-              Explore Collection
-            </button>
-            <button class="btn-primary border-2 border-white bg-transparent hover:bg-white hover:text-ice-blue">
-              Find a Dealer
-            </button>
+      <section id="cta" class="section-padding cta-snow-theme relative overflow-hidden">
+        <div class="cta-background-effect"></div>
+        <div class="cta-snow-overlay"></div>
+        <div class="container text-center relative z-10">
+          <div class="cta-frost-glow">
+            <h2 class="font-heading text-5xl font-bold mb-6 reveal-element cta-title">
+              Ready to Elevate Your Ride?
+            </h2>
+            <p class="text-xl mb-8 reveal-element cta-subtitle">
+              Join thousands of riders who trust FROSTLINE for their mountain adventures
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center reveal-element">
+              <button class="btn-cta-primary group">
+                <span class="relative z-10">Explore Collection</span>
+                <div class="btn-snow-effect"></div>
+              </button>
+              <button class="btn-cta-secondary group">
+                <span class="relative z-10">Find a Dealer</span>
+                <div class="btn-ice-effect"></div>
+              </button>
+            </div>
           </div>
         </div>
+        <div class="cta-mountain-silhouette"></div>
       </section>
 
       <!-- Footer -->
-      <footer class="section-padding bg-charcoal">
-        <div class="container text-center">
-          <h3 class="font-heading">FROSTLINE</h3>
-          <p>Crafting premium snowboard experiences since 2020</p>
-          <div class="flex justify-center" style="gap: 1.5rem;">
-            <a href="#">Instagram</a>
-            <a href="#">Twitter</a>
-            <a href="#">YouTube</a>
+      <footer id="footer" class="section-padding footer-snow-theme relative overflow-hidden">
+        <div class="footer-background-pattern"></div>
+        <div class="footer-aurora"></div>
+        <div class="container text-center relative z-10">
+          <div class="footer-content-wrapper">
+            <div class="footer-logo-section mb-8">
+              <h3 class="font-heading text-4xl font-bold text-white mb-4 footer-logo">
+                FROSTLINE
+              </h3>
+              <div class="footer-tagline">
+                <p class="text-lg text-blue-100 italic">
+                  Crafting premium snowboard experiences since 2020
+                </p>
+              </div>
+            </div>
+            
+            <div class="footer-social-section">
+              <div class="social-links-wrapper">
+                <a href="#" class="social-link instagram-link">
+                  <div class="social-icon">
+                    <span>📸</span>
+                  </div>
+                  <span>Instagram</span>
+                  <div class="social-hover-effect"></div>
+                </a>
+                <a href="#" class="social-link twitter-link">
+                  <div class="social-icon">
+                    <span>🐦</span>
+                  </div>
+                  <span>Twitter</span>
+                  <div class="social-hover-effect"></div>
+                </a>
+                <a href="#" class="social-link youtube-link">
+                  <div class="social-icon">
+                    <span>📺</span>
+                  </div>
+                  <span>YouTube</span>
+                  <div class="social-hover-effect"></div>
+                </a>
+              </div>
+            </div>
+            
+            <div class="footer-bottom mt-8 pt-10 border-t border-blue-300/20">
+              <p class="text-sm text-white">
+                © 2025 FROSTLINE. All rights reserved. | Ride responsibly, adventure boldly.
+              </p>
+            </div>
           </div>
         </div>
+        <div class="footer-snowflakes"></div>
       </footer>
     </div>
     <script type="module" src="/src/main.js"></script>

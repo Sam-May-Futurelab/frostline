@@ -129,6 +129,202 @@ class FrostlineAnimations {
         snowboarder.style.transform = 'translateX(0) scale(1)'
       }
     }, 1700)
+
+    // Add dynamic snowboard trail effects
+    this.createSnowboardTrails()
+    
+    // Add dynamic powder effects
+    this.createPowderBursts()
+    
+    // Initialize hero interactive effects
+    this.initHeroInteractiveEffects()
+  }
+
+  // Create dynamic snowboard trails
+  createSnowboardTrails() {
+    const hero = document.getElementById('hero')
+    if (!hero) return
+
+    setInterval(() => {
+      const trail = document.createElement('div')
+      trail.className = 'dynamic-trail'
+      
+      const startX = Math.random() * window.innerWidth
+      const startY = Math.random() * (window.innerHeight * 0.6) + (window.innerHeight * 0.2)
+      const duration = 3 + Math.random() * 2 // 3-5 seconds
+      const angle = (Math.random() - 0.5) * 30 // -15 to 15 degrees
+      
+      trail.style.cssText = `
+        position: absolute;
+        left: ${startX}px;
+        top: ${startY}px;
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(90deg, 
+          transparent, 
+          rgba(79, 195, 247, 0.8), 
+          rgba(255, 255, 255, 0.6),
+          transparent
+        );
+        border-radius: 2px;
+        pointer-events: none;
+        z-index: 5;
+        transform: rotate(${angle}deg);
+        animation: dynamic-trail-move ${duration}s ease-out forwards;
+      `
+      
+      hero.appendChild(trail)
+      
+      setTimeout(() => {
+        if (trail.parentNode) {
+          trail.parentNode.removeChild(trail)
+        }
+      }, duration * 1000)
+    }, 4000) // Create new trail every 4 seconds
+  }
+
+  // Create powder burst effects
+  createPowderBursts() {
+    const hero = document.getElementById('hero')
+    if (!hero) return
+
+    setInterval(() => {
+      const burst = document.createElement('div')
+      burst.className = 'powder-burst'
+      
+      const x = Math.random() * window.innerWidth
+      const y = window.innerHeight * 0.7 + Math.random() * (window.innerHeight * 0.2)
+      
+      burst.style.cssText = `
+        position: absolute;
+        left: ${x}px;
+        top: ${y}px;
+        width: 4px;
+        height: 4px;
+        pointer-events: none;
+        z-index: 6;
+      `
+      
+      // Create multiple powder particles
+      for (let i = 0; i < 8; i++) {
+        const particle = document.createElement('div')
+        const angle = (i / 8) * 360
+        const distance = 20 + Math.random() * 15
+        
+        particle.style.cssText = `
+          position: absolute;
+          width: 3px;
+          height: 3px;
+          background: radial-gradient(circle, rgba(255,255,255,0.9), rgba(79,195,247,0.5));
+          border-radius: 50%;
+          animation: powder-particle-${i} 2s ease-out forwards;
+        `
+        
+        // Add dynamic animation
+        const style = document.createElement('style')
+        style.textContent = `
+          @keyframes powder-particle-${i} {
+            0% {
+              opacity: 1;
+              transform: translate(0, 0) scale(1);
+            }
+            100% {
+              opacity: 0;
+              transform: translate(${Math.cos(angle * Math.PI / 180) * distance}px, ${Math.sin(angle * Math.PI / 180) * distance - 20}px) scale(0.3);
+            }
+          }
+        `
+        document.head.appendChild(style)
+        
+        burst.appendChild(particle)
+        
+        setTimeout(() => {
+          if (style.parentNode) {
+            style.parentNode.removeChild(style)
+          }
+        }, 2000)
+      }
+      
+      hero.appendChild(burst)
+      
+      setTimeout(() => {
+        if (burst.parentNode) {
+          burst.parentNode.removeChild(burst)
+        }
+      }, 2000)
+    }, 6000) // Create powder burst every 6 seconds
+  }
+
+  // Initialize hero interactive effects
+  initHeroInteractiveEffects() {
+    const hero = document.getElementById('hero')
+    if (!hero) return
+
+    // Mouse movement creates snow wake effect
+    hero.addEventListener('mousemove', (e) => {
+      const wake = document.createElement('div')
+      wake.className = 'mouse-wake'
+      
+      wake.style.cssText = `
+        position: absolute;
+        left: ${e.clientX}px;
+        top: ${e.clientY}px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(79, 195, 247, 0.3), transparent);
+        pointer-events: none;
+        z-index: 10;
+        animation: wake-expand 1s ease-out forwards;
+      `
+      
+      hero.appendChild(wake)
+      
+      setTimeout(() => {
+        if (wake.parentNode) {
+          wake.parentNode.removeChild(wake)
+        }
+      }, 1000)
+    })
+
+    // Add dynamic animation styles
+    const style = document.createElement('style')
+    style.textContent = `
+      @keyframes dynamic-trail-move {
+        0% {
+          opacity: 0;
+          transform: translateX(-50px) scale(0.5);
+        }
+        15% {
+          opacity: 1;
+          transform: translateX(0) scale(1);
+        }
+        85% {
+          opacity: 1;
+          transform: translateX(150px) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translateX(200px) scale(0.3);
+        }
+      }
+      
+      @keyframes wake-expand {
+        0% {
+          opacity: 0.6;
+          transform: scale(0);
+        }
+        50% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(2);
+        }
+      }
+    `
+    document.head.appendChild(style)
   }
 
   // Initialize gear section
@@ -242,12 +438,6 @@ class FrostlineAnimations {
     function updateParallax() {
       const scrolled = window.pageYOffset
 
-      // Hero parallax
-      const hero = document.getElementById('hero')
-      if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.3}px)`
-      }
-
       // About section mountain parallax
       const mountainSilhouette = document.querySelector('.mountain-silhouette')
       if (mountainSilhouette) {
@@ -281,7 +471,7 @@ class FrostlineAnimations {
 
   // Enhanced section transition effects
   initSectionTransitions() {
-    const sections = document.querySelectorAll('section')
+    const sections = document.querySelectorAll('section, footer')
     
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -316,6 +506,9 @@ class FrostlineAnimations {
         break
       case 'cta':
         this.animateCTA(section)
+        break
+      case 'footer':
+        this.animateFooter(section)
         break
     }
   }
@@ -374,14 +567,142 @@ class FrostlineAnimations {
   }
 
   animateCTA(section) {
-    const ctaElements = section.querySelectorAll('h2, p, .btn')
+    const ctaTitle = section.querySelector('.cta-title')
+    const ctaSubtitle = section.querySelector('.cta-subtitle')
+    const ctaButtons = section.querySelectorAll('.btn-cta-primary, .btn-cta-secondary')
     
-    ctaElements.forEach((element, index) => {
+    // Animate title with shimmer effect
+    if (ctaTitle) {
       setTimeout(() => {
-        element.style.transform = 'translateY(0)'
-        element.style.opacity = '1'
-      }, index * 200)
+        ctaTitle.style.transform = 'translateY(0) scale(1)'
+        ctaTitle.style.opacity = '1'
+        
+        // Add sparkle effect to title
+        this.addSparkleEffect(ctaTitle)
+      }, 200)
+    }
+    
+    // Animate subtitle
+    if (ctaSubtitle) {
+      setTimeout(() => {
+        ctaSubtitle.style.transform = 'translateY(0)'
+        ctaSubtitle.style.opacity = '1'
+      }, 500)
+    }
+    
+    // Animate buttons with stagger
+    ctaButtons.forEach((button, index) => {
+      setTimeout(() => {
+        button.style.transform = 'translateY(0) scale(1)'
+        button.style.opacity = '1'
+        
+        // Add floating particles around buttons
+        this.addFloatingParticles(button)
+      }, 800 + (index * 200))
     })
+    
+    // Animate mountain silhouette
+    const mountain = section.querySelector('.cta-mountain-silhouette')
+    if (mountain) {
+      setTimeout(() => {
+        mountain.style.opacity = '1'
+        mountain.style.transform = 'scaleY(1)'
+      }, 1200)
+    }
+  }
+
+  // Add footer animations
+  animateFooter(section) {
+    const footerLogo = section.querySelector('.footer-logo')
+    const footerTagline = section.querySelector('.footer-tagline')
+    const socialLinks = section.querySelectorAll('.social-link')
+    const footerBottom = section.querySelector('.footer-bottom')
+    
+    // Animate logo with glow effect
+    if (footerLogo) {
+      setTimeout(() => {
+        footerLogo.style.transform = 'scale(1)'
+        footerLogo.style.opacity = '1'
+      }, 200)
+    }
+    
+    // Animate tagline
+    if (footerTagline) {
+      setTimeout(() => {
+        footerTagline.style.transform = 'translateY(0)'
+        footerTagline.style.opacity = '1'
+      }, 500)
+    }
+    
+    // Animate social links with stagger
+    socialLinks.forEach((link, index) => {
+      setTimeout(() => {
+        link.style.transform = 'translateY(0) scale(1)'
+        link.style.opacity = '1'
+        
+        // Add hover sparkle effect
+        this.addSocialSparkle(link)
+      }, 800 + (index * 150))
+    })
+    
+    // Animate footer bottom
+    if (footerBottom) {
+      setTimeout(() => {
+        footerBottom.style.transform = 'translateY(0)'
+        footerBottom.style.opacity = '1'
+      }, 1300)
+    }
+  }
+
+  // Add special sparkle effect for social links
+  addSocialSparkle(element) {
+    element.addEventListener('mouseenter', () => {
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          const sparkle = document.createElement('div')
+          sparkle.style.cssText = `
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: radial-gradient(circle, #4FC3F7, transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: social-sparkle 1s ease-out forwards;
+            top: ${Math.random() * 100}%;
+            left: ${Math.random() * 100}%;
+            z-index: 15;
+          `
+          
+          element.style.position = 'relative'
+          element.appendChild(sparkle)
+          
+          setTimeout(() => sparkle.remove(), 1000)
+        }, i * 100)
+      }
+    })
+    
+    // Add social sparkle animation if not exists
+    if (!document.querySelector('#social-sparkle-styles')) {
+      const style = document.createElement('style')
+      style.id = 'social-sparkle-styles'
+      style.textContent = `
+        @keyframes social-sparkle {
+          0% {
+            opacity: 1;
+            transform: scale(0) rotate(0deg);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1) rotate(180deg);
+          }
+          100% {
+            opacity: 0;
+            transform: scale(0) rotate(360deg);
+          }
+        }
+      `
+      document.head.appendChild(style)
+    }
   }
 
   // Counter animation for stat numbers
