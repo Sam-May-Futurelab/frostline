@@ -185,4 +185,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-**Built with ❄️ by the FROSTLINE team**
+**Built with love by the Futurelab team**
